@@ -1,0 +1,67 @@
+package com.rating.entities;
+
+public class Rating {
+	
+	private int ratingId;
+	private int hotelId;
+	private int userId;	
+	private int rating;
+	private String feedback;
+	
+	public Rating() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
+
+	public Rating(int ratingId, int hotelId, int userId, int rating, String feedback) {
+		super();
+		this.ratingId = ratingId;
+		this.hotelId = hotelId;
+		this.userId = userId;
+		this.rating = rating;
+		this.feedback = feedback;
+	}
+
+	public int getRatingId() {
+		return ratingId;
+	}
+
+	public void setRatingId(int ratingId) {
+		this.ratingId = ratingId;
+	}
+
+	public int getHotelId() {
+		return hotelId;
+	}
+
+	public void setHotelId(int hotelId) {
+		this.hotelId = hotelId;
+	}
+
+	public int getUserId() {
+		return userId;
+	}
+
+	public void setUserId(int userId) {
+		this.userId = userId;
+	}
+
+	public int getRating() {
+		return rating;
+	}
+
+	public void setRating(int rating) {
+		this.rating = rating;
+	}
+
+	public String getFeedback() {
+		return feedback;
+	}
+
+	public void setFeedback(String feedback) {
+		this.feedback = feedback;
+	}
+	
+	
+
+}

@@ -1,0 +1,33 @@
+package com.rating.services;
+
+import java.util.List;
+
+import com.rating.entities.Rating;
+
+public class RatingServiceImpl implements RatingService{
+
+	@Override
+	public Rating saveRating(Rating rating) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public List<Rating> getAllRatings() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public List<Rating> getRatingsByUserId(int userId) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public List<Rating> getRatingsByHotelId(int hotelId) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+}

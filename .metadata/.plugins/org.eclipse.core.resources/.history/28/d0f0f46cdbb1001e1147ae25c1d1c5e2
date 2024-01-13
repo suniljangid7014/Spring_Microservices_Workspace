@@ -1,0 +1,46 @@
+package com.rating.services;
+
+import java.util.List;
+import java.util.UUID;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import com.rating.entities.Rating;
+import com.rating.repositories.RatingRepository;
+
+@Service
+public class RatingServiceImpl implements RatingService{
+
+	@Autowired
+	private RatingRepository ratingRepository;
+	
+	@Override
+	public Rating saveRating(Rating rating) {
+		// TODO Auto-generated method stub
+		String id = UUID.randomUUID().toString();
+		rating.setRatingId(id);
+		Rating rtg = this.ratingRepository.save(rating);
+		return rtg;
+	}
+
+	@Override
+	public List<Rating> getAllRatings() {
+		// TODO Auto-generated method stub
+		List<Rating> ratings = this.ratingRepository.findAll();
+		return ratings;
+	}
+
+	@Override
+	public List<Rating> getRatingsByUserId(int userId) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public List<Rating> getRatingsByHotelId(int hotelId) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+}

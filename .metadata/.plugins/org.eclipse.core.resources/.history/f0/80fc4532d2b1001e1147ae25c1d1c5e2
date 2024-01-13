@@ -1,0 +1,15 @@
+package com.rating.services;
+
+import java.util.List;
+
+import com.rating.entities.Rating;
+
+public interface RatingService {
+	
+//	Save Rating
+	Rating saveRating(Rating rating);
+	
+//	Get All Ratings	
+	List<Rating> getAllRatings();
+
+}
