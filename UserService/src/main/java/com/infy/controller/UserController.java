@@ -1,10 +1,9 @@
 package com.infy.controller;
 
 
-import java.util.Arrays;
 import java.util.List;
-import java.util.stream.Collectors;
 
+import org.apache.commons.logging.Log;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -14,18 +13,17 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
-import org.springframework.web.client.RestTemplate;
 
-import com.infy.entities.Hotel;
-import com.infy.entities.Rating;
 import com.infy.entities.User;
-import com.infy.externalservices.HotelService;
-import com.infy.externalservices.RatingService;
 import com.infy.services.UserService;
+
+import io.github.resilience4j.circuitbreaker.annotation.CircuitBreaker;
 
 @RestController
 @RequestMapping("users")
 public class UserController {
+	
+	
 
 	@Autowired
 	private UserService userService;
@@ -45,9 +43,15 @@ public class UserController {
 	}
 
 	@GetMapping("/{id}")
+	@CircuitBreaker(name = "CircuitBreakerService", fallbackMethod = "ratingHotelFallback")
 	public ResponseEntity<User> getUser(@PathVariable String id) {
 		User user = this.userService.getUser(id);
 		return new ResponseEntity<User>(user, HttpStatus.OK);
+	}
+	
+	public 	ResponseEntity<User> ratingHotelFallback(String id, Exception exception) {
+		User u = new User("1001", "MotiLal", "moti@gmail.com", "Dummy User because some service is down", null);
+		return new ResponseEntity(u,HttpStatus.OK);
 	}
 
 }
